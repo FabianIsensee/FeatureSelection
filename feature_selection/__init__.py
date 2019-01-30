@@ -1,3 +1,5 @@
-from feature_selection.filter_feature_selection import FilterFeatureSelection
-from feature_selection.wrapper_feature_selection import sequential_forward_selection, best_first_search
-from feature_selection.evaluation_functions import evaluation_function
+from __future__ import absolute_import
+
+import feature_selection.filter_feature_selection
+import feature_selection.wrapper_feature_selection
+import feature_selection.evaluation_functions

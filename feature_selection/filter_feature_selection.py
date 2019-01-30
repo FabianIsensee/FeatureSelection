@@ -18,6 +18,12 @@ class FilterFeatureSelection(object):
         The default mutual information estimation algorithm used is the histogram binning method. If a more
         sophisticated approach is required, use the change_MI_estimator function to apply your own method.
 
+        IMPORTANT! For regression problems we recommend you use Kraskov's nearest neighbor MI estimator! You can get
+        it here: https://github.com/gregversteeg/NPEET/blob/master/npeet/entropy_estimators.py
+        Force FilterFeatureSelection to use it via:
+        FilterFeatureSelection._change_mi_method(mi)
+        FilterFeatureSelection._change_cmi_method(cmi)
+
         :param X: (n_samples, n_features) numpy array containing the training data
         :param Y: (n_samples) numpy array containing target labels
         :param method: filter criterion that will be applied to select the features. Available criteria are: (as string)

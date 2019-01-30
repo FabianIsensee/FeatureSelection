@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: feature-selection
+Version: 0.1
+Summary: Small and simple python package to run filter and wrapper feature selection methods
+Home-page: https://github.com/FabianIsensee/FeatureSelection
+Author: Fabian Isensee, Division of Medical Image Computing, German Cancer Research Center
+Author-email: f.isensee@dkfz-heidelberg.de
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
