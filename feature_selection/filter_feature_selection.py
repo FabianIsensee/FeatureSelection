@@ -24,6 +24,9 @@ class FilterFeatureSelection(object):
         FilterFeatureSelection._change_mi_method(mi)
         FilterFeatureSelection._change_cmi_method(cmi)
 
+        ALSO IMPORTANT: This class will automatically normalize the data for MI estimation (zero mean unit variance).
+        You should check if that is OK with your custom MI estimator if you are using one (it should be ok though!)
+
         :param X: (n_samples, n_features) numpy array containing the training data
         :param Y: (n_samples) numpy array containing target labels
         :param method: filter criterion that will be applied to select the features. Available criteria are: (as string)
@@ -105,18 +108,18 @@ class FilterFeatureSelection(object):
 
     def _change_cmi_method(self, method):
         """
-        Do not use this
+        Do not use this, unless you think you know what you're doing
 
-        :param method: Seriously. Don't. Its for some testing purposes
+        :param method:
         :return:
         """
         self._class_cond_mi_method = method
 
     def _change_mi_method(self, method):
         """
-        Do not use this
+        Do not use this, unless you think you know what you're doing
 
-        :param method: Seriously. Don't. Its for some testing purposes
+        :param method:
         :return:
         """
         self._mutual_information_estimator = method
