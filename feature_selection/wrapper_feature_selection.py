@@ -137,12 +137,13 @@ def best_first_search(evaluation_function, data, target, max_num_features, num_t
     :param max_num_features:
     :param num_threads:
     :param verbose:
-    :return:
+    :return: best feature set, score of that set (as computed by evaluation_function), best feature set of each size
+    (best set of size 1, best set of size 2, etc), all feature sets that were evaluated throughout the seartch (useful
+    for counting)
     """
     all_evaluated_feature_sets = {}
     best_feature_set_by_size = {i: {'set':None, 'criterion':9999999999} for i in range(max_num_features + 1)}
     current_set = []
-    order_of_addition = []
     current_best_score = 999999999999
     p = Pool(num_threads)
     best_set = None
@@ -154,13 +155,6 @@ def best_first_search(evaluation_function, data, target, max_num_features, num_t
         examine_these = find_set_expansions(current_set, range(data.shape[1]), True, True, all_evaluated_feature_sets)
         scores = p.map(evaluate_set, zip([evaluation_function]*len(examine_these), [data] * len(examine_these), [target] * len(examine_these), examine_these))
         idx_best = np.argmin(scores)
-
-        was_added = [i for i in examine_these[idx_best] if i not in current_set]
-        was_removed = [i for i in current_set if i not in examine_these[idx_best]]
-        if len(was_added) > 0:
-            order_of_addition += was_added
-        if len(was_removed) > 0:
-            order_of_addition = [i for i in order_of_addition if i != was_removed]
 
         # go through all sets and scores, add them to dicts for later analysis
         for score, set in zip(scores, examine_these):
@@ -199,4 +193,4 @@ def best_first_search(evaluation_function, data, target, max_num_features, num_t
 
     p.close()
     p.join()
-    return best_set, current_best_score, best_feature_set_by_size, all_evaluated_feature_sets, order_of_addition
+    return best_set, current_best_score, best_feature_set_by_size, all_evaluated_feature_sets
