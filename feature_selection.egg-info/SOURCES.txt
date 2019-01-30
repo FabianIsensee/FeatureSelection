@@ -1,8 +1,0 @@
-feature_selection/__init__.py
-feature_selection/evaluation_functions.py
-feature_selection/filter_feature_selection.py
-feature_selection/wrapper_feature_selection.py
-feature_selection.egg-info/PKG-INFO
-feature_selection.egg-info/SOURCES.txt
-feature_selection.egg-info/dependency_links.txt
-feature_selection.egg-info/top_level.txt
